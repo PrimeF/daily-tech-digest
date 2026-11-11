@@ -127,6 +127,9 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .prose h2#sources ~ ol, .prose h2#sources ~ ul { font-size: .82rem; line-height: 1.5; color: var(--muted); }
 .prose h2#sources ~ ol li, .prose h2#sources ~ ul li { margin: .2em 0; }
 
+/* Access notes: compact */
+.prose h2#access-notes + ul, .prose h2#access-notes + p { font-size: .88rem; line-height: 1.55; color: var(--muted); }
+
 /* Pager */
 .pager {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;

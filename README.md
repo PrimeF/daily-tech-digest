@@ -23,6 +23,9 @@ headlines:
 ## AI & Agentic AI
 ...
 
+## Access Notes
+- openai.com/news: blocks automated clients; read via its RSS feed
+
 ## Sources
 1. [Title](https://example.com)
 ```
@@ -31,7 +34,7 @@ headlines:
 - `headlines` (2 to 5 short lines) are shown in the archive and searched by the archive filter.
 - `coverage` is optional.
 - Every `##` heading becomes an entry in the section index. Text in brackets at the end of a heading is left out of the index.
-- The `## Top Stories` section is shown as a highlighted panel. A `## Sources` list is shown in a smaller font.
+- The `## Top Stories` section is shown as a highlighted panel. `## Access Notes` (sites that could not be read, and how that was handled) and the `## Sources` list are shown in a smaller font.
 
 Existing posts are never edited or deleted.
 

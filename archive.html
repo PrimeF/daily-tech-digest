@@ -1,0 +1,35 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+<section class="archive">
+  <header class="archive-head">
+    <h1>Archive</h1>
+    <input type="search" id="filter" placeholder="Filter by keyword" aria-label="Filter digests by keyword" autocomplete="off">
+  </header>
+
+  {% assign months = site.posts | group_by_exp: "p", "p.date | date: '%B %Y'" %}
+  {% for month in months %}
+  <section class="month">
+    <h2>{{ month.name }}</h2>
+    <ol class="days">
+      {% for post in month.items %}
+      <li class="day" data-text="{{ post.headlines | join: ' ' | downcase | escape }}">
+        <a href="{{ post.url | relative_url }}">
+          <time datetime="{{ post.date | date_to_xmlschema }}"><span>{{ post.date | date: "%a" }}</span>{{ post.date | date: "%-d" }}</time>
+          {% if post.headlines %}
+          <ul>{% for h in post.headlines %}<li>{{ h }}</li>{% endfor %}</ul>
+          {% else %}
+          <ul><li>{{ post.date | date: "%A, %-d %B %Y" }}</li></ul>
+          {% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% else %}
+  <p class="empty">No digests published yet.</p>
+  {% endfor %}
+  <p class="empty" id="no-results" hidden>No digests match this filter.</p>
+</section>

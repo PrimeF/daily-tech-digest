@@ -1,0 +1,9 @@
+---
+layout: default
+---
+{% assign post = site.posts.first %}
+{% if post %}
+  {% include digest.html post=post body=post.content %}
+{% else %}
+  <p class="empty">No digests published yet. The first one appears after the next scheduled run.</p>
+{% endif %}

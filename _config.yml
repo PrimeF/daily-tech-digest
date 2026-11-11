@@ -1,0 +1,32 @@
+title: Tech Digest
+description: Daily digest of AI, cloud, MCP/A2A, agent frameworks and engineering blogs.
+lang: en
+timezone: Europe/Berlin
+
+# Set to "/<repo-name>" for a project site (https://<user>.github.io/<repo-name>/).
+# Leave empty for a user site or a custom domain.
+baseurl: "/daily-tech-digest"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+
+permalink: /:year/:month/:day/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: digest }
+
+plugins:
+  - jekyll-feed
+
+feed:
+  path: feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

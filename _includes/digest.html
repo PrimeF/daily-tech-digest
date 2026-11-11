@@ -1,0 +1,31 @@
+{% assign post = include.post %}
+{% assign words = include.body | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 230 | at_least: 1 %}
+<article class="digest">
+  <header class="digest-head">
+    <nav class="day-nav" aria-label="Day">
+      {% if post.previous %}<a rel="prev" href="{{ post.previous.url | relative_url }}" title="Previous digest (←)">‹ {{ post.previous.date | date: "%-d %b" }}</a>{% else %}<span></span>{% endif %}
+      {% if post.next %}<a rel="next" href="{{ post.next.url | relative_url }}" title="Next digest (→)">{{ post.next.date | date: "%-d %b" }} ›</a>{% endif %}
+    </nav>
+    <h1><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%A, %-d %B %Y" }}</time></h1>
+    <p class="meta">
+      {% if post.coverage %}Covers {{ post.coverage }} · {% endif %}{{ minutes }} min read
+      {% if page.url == '/' %} · <a href="{{ post.url | relative_url }}">Permalink</a>{% endif %}
+    </p>
+  </header>
+
+  <div class="digest-body">
+    <aside class="toc" aria-label="Sections">
+      <p class="toc-title">Sections</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="prose">
+      {{ include.body }}
+    </div>
+  </div>
+
+  <nav class="pager" aria-label="More digests">
+    {% if post.previous %}<a rel="prev" href="{{ post.previous.url | relative_url }}"><span>Previous</span>{{ post.previous.date | date: "%A, %-d %B" }}</a>{% else %}<span></span>{% endif %}
+    {% if post.next %}<a rel="next" class="next" href="{{ post.next.url | relative_url }}"><span>Next</span>{{ post.next.date | date: "%A, %-d %B" }}</a>{% endif %}
+  </nav>
+</article>
